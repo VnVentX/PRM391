@@ -1,31 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <ImageView
-        android:id="@+id/foodImage"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:src="@drawable/comga"
-        android:scaleType="fitXY"/>
-    <TextView
-        android:id="@+id/foodName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Com ga xoi mo"
-        android:layout_toRightOf="@+id/foodImage"
-        android:layout_marginLeft="10dp"
-        android:textSize="18sp"/>
-    <TextView
-        android:id="@+id/foodPrice"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="25.000VND"
-        android:layout_toRightOf="@id/foodImage"
-        android:layout_below="@+id/foodName"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="5dp"
-        android:textSize="16sp"
-        android:textStyle="bold"/>
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-</RelativeLayout>
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="7dp"
+        app:cardElevation="7dp"
+        android:layout_margin="5dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/foodImage"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/comga"
+                android:scaleType="fitXY"/>
+            <TextView
+                android:id="@+id/foodName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Com ga xoi mo"
+                android:layout_toRightOf="@+id/foodImage"
+                android:layout_marginLeft="10dp"
+                android:textSize="18sp"
+                android:textColor="#17202A"/>
+            <TextView
+                android:id="@+id/foodPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="25.000VND"
+                android:layout_toRightOf="@id/foodImage"
+                android:layout_below="@+id/foodName"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:textSize="16sp"
+                android:textStyle="bold"/>
+
+            <Button
+                android:id="@+id/btnAdd"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:gravity="center"
+                android:layout_centerVertical="true"
+                android:background="@drawable/round_button"
+                android:layout_toLeftOf="@+id/txtQuantity"
+                android:text="+"
+                android:textColor="#FFFFFF"/>
+            <TextView
+                android:id="@+id/txtQuantity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:textColor="#17202A"
+                android:layout_toLeftOf="@+id/btnMinus"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="5dp"
+                android:layout_marginLeft="5dp"/>
+            <Button
+                android:id="@+id/btnMinus"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:gravity="center"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/round_button"
+                android:text="-"
+                android:textColor="#FFFFFF"/>
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+</FrameLayout>

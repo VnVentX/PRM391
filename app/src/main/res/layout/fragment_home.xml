@@ -77,14 +77,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
-
         </LinearLayout>
     </HorizontalScrollView>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Top Sell:"
+        android:text="Food Course:"
         android:textColor="#D81B60"
         android:layout_marginLeft="5dp"
         android:layout_marginTop="5dp"

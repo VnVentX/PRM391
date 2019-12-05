@@ -10,27 +10,37 @@
     <ImageView
         android:id="@+id/storeImage"
         android:layout_width="match_parent"
-        android:layout_height="200dp"/>
+        android:layout_height="200dp"
+        android:scaleType="centerCrop" />
+
     <TextView
         android:id="@+id/storeName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Quan Ga Chi Dau"
-        android:layout_marginTop="10dp"
         android:layout_marginLeft="10dp"
-        android:textStyle="bold"
-        android:textSize="20sp"/>
+        android:layout_marginTop="10dp"
+        android:text="Quan Ga Chi Dau"
+        android:textColor="#17202A"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
     <TextView
-        android:id="@+id/storeAddress"
+        android:id="@+id/storeDecrip"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="55 duong so 17, p.Linh Chieu, Thu Duc, TP.HCM"
-        android:layout_marginLeft="10dp"/>
+        android:layout_marginLeft="10dp"
+        android:text="55 duong so 17, p.Linh Chieu, Thu Duc, TP.HCM" />
+
     <ListView
         android:id="@+id/foodContainer"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"></ListView>
 
-    </ListView>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="#F5B7B1"
+        android:text="Food Cart" />
 
 </LinearLayout>

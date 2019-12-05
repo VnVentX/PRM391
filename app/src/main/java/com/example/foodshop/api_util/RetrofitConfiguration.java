@@ -18,7 +18,7 @@ public class RetrofitConfiguration {
             @Override
             public Response intercept(Chain chain) throws IOException {
                 Request newRequest = chain.request().newBuilder()
-                        .addHeader("????", "???")
+                        .addHeader("token", "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJqdW1ib3kuOTZAZ21haWwuY29tIiwiZXhwIjoxNTc2MTI3MTAyfQ.1RQKOifrCbzfG9nUjieKTLfxsL59e2NJwV302R9cXfx71gMPMFvmu-seWBQ9wZhGFDvFn-LjXgPrnCrv94603g")
                         .build();
                 return chain.proceed(newRequest);
             }
