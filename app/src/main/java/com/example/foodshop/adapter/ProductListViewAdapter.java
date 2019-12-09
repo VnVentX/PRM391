@@ -1,5 +1,6 @@
 package com.example.foodshop.adapter;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.foodshop.R;
+import com.example.foodshop.StoreActivity;
 import com.example.foodshop.cart.CartObj;
 import com.example.foodshop.model.Product;
 
@@ -55,26 +57,35 @@ public class ProductListViewAdapter extends BaseAdapter {
         Glide.with(view).load(product.getImageLink()).into(foodImage);
 
         Button btnAdd = view.findViewById(R.id.btnAdd);
-        Button btnMinus = view.findViewById(R.id.btnMinus);
+        final Button btnMinus = view.findViewById(R.id.btnMinus);
         final TextView txtQuantty = view.findViewById(R.id.txtQuantity);
+        btnMinus.setEnabled(false);
 
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                cart.addItemToCart(product.getIdProduct());
-                txtQuantty.setText(cart.getItems().get(product.getIdProduct())+"");
+                btnMinus.setEnabled(true);
+                cart.addItemToCart(product);
+                txtQuantty.setText(cart.getItems().get(product.getIdProduct()).getQuantity()+"");
+                double price = cart.getItems().get(product.getIdProduct()).getUnitPrice();
+                StoreActivity storeActivity = (StoreActivity) view.getContext();
+                storeActivity.takeTotalPrice(price);
             }
         });
 
         btnMinus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(cart.getItems().get(product.getIdProduct()) == 1) {
+                double price = cart.getItems().get(product.getIdProduct()).getUnitPrice();
+                StoreActivity storeActivity = (StoreActivity) view.getContext();
+                storeActivity.removePrice(price);
+                if(cart.getItems().get(product.getIdProduct()).getQuantity() == 1) {
                     cart.removeItemFromCart(product.getIdProduct());
                     txtQuantty.setText("0");
-                }else if(cart.getItems().get(product.getIdProduct()) > 1) {
+                    btnMinus.setEnabled(false);
+                }else if(cart.getItems().get(product.getIdProduct()).getQuantity() > 1) {
                     cart.removeItemFromCart(product.getIdProduct());
-                    txtQuantty.setText(cart.getItems().get(product.getIdProduct()) + "");
+                    txtQuantty.setText(cart.getItems().get(product.getIdProduct()).getQuantity() + "");
                 }
             }
         });

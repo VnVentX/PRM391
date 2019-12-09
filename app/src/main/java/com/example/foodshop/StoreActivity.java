@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -20,11 +21,12 @@ import java.util.List;
 public class StoreActivity extends AppCompatActivity {
     Store store;
     ListView productList;
-    TextView storeName, storeDecrip;
+    TextView storeName, storeDecrip, txtTotal;
     ImageView storeIamge;
     List<Product> products;
     ProductListViewAdapter productListViewAdapter;
     CartObj cart;
+    double totals;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +37,7 @@ public class StoreActivity extends AppCompatActivity {
         storeName = findViewById(R.id.storeName);
         storeDecrip = findViewById(R.id.storeDecrip);
         storeIamge = findViewById(R.id.storeImage);
+        txtTotal = findViewById(R.id.txtTotal);
 
         cart.setIdStore(store.getIdStore());
         storeName.setText(store.getName());
@@ -46,5 +49,21 @@ public class StoreActivity extends AppCompatActivity {
         productListViewAdapter = new ProductListViewAdapter(products, cart);
         productListViewAdapter.notifyDataSetChanged();
         productList.setAdapter(productListViewAdapter);
+    }
+
+    public void takeTotalPrice(double total) {
+        totals = totals + total;
+        txtTotal.setText("Total: " + totals + "VND");
+    }
+
+    public void removePrice(double price) {
+        totals = totals - price;
+        txtTotal.setText("Total: " + totals + "VND");
+    }
+
+    public void clickToViewCart(View view) {
+        Intent intent = new Intent(StoreActivity.this, CartActivity.class);
+        intent.putExtra("cart", cart);
+        startActivity(intent);
     }
 }

@@ -6,7 +6,7 @@
         android:id="@+id/txtCategory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="#C0392B"
+        android:textColor="#F08080"
         android:text="Rice"
         android:textStyle="bold"
         android:textSize="14sp"

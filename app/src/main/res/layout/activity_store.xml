@@ -1,46 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context=".StoreActivity">
 
-    <ImageView
-        android:id="@+id/storeImage"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:scaleType="centerCrop" />
-
-    <TextView
-        android:id="@+id/storeName"
+    <LinearLayout
+        android:id="@+id/test"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
-        android:text="Quan Ga Chi Dau"
-        android:textColor="#17202A"
-        android:textSize="20sp"
-        android:textStyle="bold" />
+        android:orientation="vertical"
+        android:layout_marginBottom="50dp">
+
+        <ImageView
+            android:id="@+id/storeImage"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:scaleType="centerCrop" />
+
+        <TextView
+            android:id="@+id/storeName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:text="Quan Ga Chi Dau"
+            android:textColor="#17202A"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/storeDecrip"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="55 duong so 17, p.Linh Chieu, Thu Duc, TP.HCM" />
+
+        <ListView
+            android:id="@+id/foodContainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></ListView>
+    </LinearLayout>
 
     <TextView
-        android:id="@+id/storeDecrip"
+        android:id="@+id/txtTotal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:text="55 duong so 17, p.Linh Chieu, Thu Duc, TP.HCM" />
-
-    <ListView
-        android:id="@+id/foodContainer"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"></ListView>
-
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:text="Total: 0VND"
+        android:gravity="center_vertical"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginBottom="10dp"
+        android:textColor="#F5B7B1"/>
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:background="#F5B7B1"
-        android:text="Food Cart" />
+        android:text="Food Cart"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:onClick="clickToViewCart"/>
 
-</LinearLayout>
+</RelativeLayout>

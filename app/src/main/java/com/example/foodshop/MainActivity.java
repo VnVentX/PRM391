@@ -5,11 +5,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.foodshop.model.ResponseLoginDTO;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
@@ -44,9 +46,9 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
-    }
 
-    public void clickToViewAll(View view) {
-        Toast.makeText(MainActivity.this, "View ALL", Toast.LENGTH_LONG).show();
+        Intent intent = getIntent();
+        ResponseLoginDTO user = (ResponseLoginDTO) intent.getSerializableExtra("user");
+        Toast.makeText(MainActivity.this, "Welcome "+user.getIdUser(), Toast.LENGTH_LONG).show();
     }
 }
