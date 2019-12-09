@@ -13,6 +13,7 @@ import com.bumptech.glide.Glide;
 import com.example.foodshop.adapter.ProductListViewAdapter;
 import com.example.foodshop.cart.CartObj;
 import com.example.foodshop.model.Product;
+import com.example.foodshop.model.ResponseLoginDTO;
 import com.example.foodshop.model.Store;
 
 import java.util.ArrayList;
@@ -20,6 +21,7 @@ import java.util.List;
 
 public class StoreActivity extends AppCompatActivity {
     Store store;
+    ResponseLoginDTO user;
     ListView productList;
     TextView storeName, storeDecrip, txtTotal;
     ImageView storeIamge;
@@ -34,12 +36,17 @@ public class StoreActivity extends AppCompatActivity {
         cart = new CartObj();
         Intent intent = getIntent();
         store = (Store) intent.getSerializableExtra("store");
+        user = (ResponseLoginDTO) intent.getSerializableExtra("user");
+
         storeName = findViewById(R.id.storeName);
         storeDecrip = findViewById(R.id.storeDecrip);
         storeIamge = findViewById(R.id.storeImage);
         txtTotal = findViewById(R.id.txtTotal);
 
+        //Order object
         cart.setIdStore(store.getIdStore());
+        cart.setUserId(user.getIdUser());
+
         storeName.setText(store.getName());
         storeDecrip.setText(store.getDescription());
         Glide.with(StoreActivity.this).load(store.getImageUrl()).into(storeIamge);
@@ -64,6 +71,8 @@ public class StoreActivity extends AppCompatActivity {
     public void clickToViewCart(View view) {
         Intent intent = new Intent(StoreActivity.this, CartActivity.class);
         intent.putExtra("cart", cart);
+        intent.putExtra("total", ""+totals);
+        intent.putExtra("storeName", store.getName());
         startActivity(intent);
     }
 }

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".ViewOrderActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Đặt Món Thành Công"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:textColor="#F08080"/>
+    <TextView
+        android:id="@+id/txtUserName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Nguoi Dat Hang: Ho Xuan Cuong"
+        android:textColor="#17202A"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:layout_margin="5dp"/>
+    <TextView
+        android:id="@+id/txtStoreName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Quan xoi Hai Ba Trung"
+        android:textColor="#17202A"
+        android:textSize="18sp"
+        android:layout_margin="5dp"/>
+    <TextView
+        android:id="@+id/txtTime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ngay order: 09/12/2019"
+        android:textColor="#17202A"
+        android:layout_marginLeft="5dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Danh Sách Món"
+        android:gravity="center"
+        android:textSize="14sp"
+        android:textColor="#F08080"
+        android:layout_marginTop="10dp"/>
+    <ListView
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:id="@+id/orderContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></ListView>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Note:"
+        android:textColor="#17202A"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="5dp"/>
+    <TextView
+        android:id="@+id/txtNote"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"/>
+    <TextView
+        android:id="@+id/txtTotalPrice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Tong Tien: 100,000VND"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:textColor="#F5B7B1"/>
+
+</LinearLayout>

@@ -17,6 +17,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.example.foodshop.adapter.StoreListViewAdapter;
 import com.example.foodshop.model.Category;
+import com.example.foodshop.model.ResponseLoginDTO;
 import com.example.foodshop.model.Store;
 import com.example.foodshop.presenter.CategoryListPresenter;
 import com.example.foodshop.presenter.StoreListPresenter;
@@ -40,6 +41,7 @@ public class HomeFragment extends Fragment implements StoreListView, LoadingView
     List<Category> categories;
     CategoryListPresenter categoryListPresenter;
 
+    ResponseLoginDTO user;
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -50,6 +52,9 @@ public class HomeFragment extends Fragment implements StoreListView, LoadingView
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
+
+        MainActivity mainActivity = (MainActivity) view.getContext();
+        user = mainActivity.userInfo();
 
         //load store
         listViewStore = view.findViewById(R.id.courseList);
@@ -64,6 +69,7 @@ public class HomeFragment extends Fragment implements StoreListView, LoadingView
                 Store store = stores.get(i);
                 Intent intent = new Intent(getActivity(), StoreActivity.class);
                 intent.putExtra("store", store);
+                intent.putExtra("user", user);
                 startActivityForResult(intent, 200);
             }
         });

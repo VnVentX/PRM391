@@ -14,6 +14,7 @@ import com.example.foodshop.model.ResponseLoginDTO;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
+    ResponseLoginDTO user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +48,11 @@ public class MainActivity extends AppCompatActivity {
         });
 
         Intent intent = getIntent();
-        ResponseLoginDTO user = (ResponseLoginDTO) intent.getSerializableExtra("user");
+        user = (ResponseLoginDTO) intent.getSerializableExtra("user");
         Toast.makeText(MainActivity.this, "Welcome "+user.getIdUser(), Toast.LENGTH_LONG).show();
+    }
+
+    public ResponseLoginDTO userInfo() {
+        return user;
     }
 }

@@ -1,13 +1,19 @@
 package com.example.foodshop.model;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.io.Serializable;
 import java.util.List;
 
 public class Order implements Serializable {
+    @SerializedName("idStore")
     String idStore;
+    @SerializedName("idUser")
     String idUser;
+    @SerializedName("notes")
     String notes;
-    List<OrderDetail> orderDetailList;
+    @SerializedName("orderDetailDTOList")
+    List<OrderDetailList> orderDetailDTOList;
 
     public String getIdStore() {
         return idStore;
@@ -33,18 +39,18 @@ public class Order implements Serializable {
         this.notes = notes;
     }
 
-    public List<OrderDetail> getOrderDetailList() {
-        return orderDetailList;
-    }
-
-    public void setOrderDetailList(List<OrderDetail> orderDetailList) {
-        this.orderDetailList = orderDetailList;
-    }
-
-    public Order(String idStore, String idUser, String notes, List<OrderDetail> orderDetailList) {
+    public Order(String idStore, String idUser, String notes, List<OrderDetailList> orderDetailDTOList) {
         this.idStore = idStore;
         this.idUser = idUser;
         this.notes = notes;
-        this.orderDetailList = orderDetailList;
+        this.orderDetailDTOList = orderDetailDTOList;
+    }
+
+    public List<OrderDetailList> getOrderDetailDTOList() {
+        return orderDetailDTOList;
+    }
+
+    public void setOrderDetailDTOList(List<OrderDetailList> orderDetailDTOList) {
+        this.orderDetailDTOList = orderDetailDTOList;
     }
 }

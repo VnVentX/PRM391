@@ -1,6 +1,6 @@
 package com.example.foodshop.cart;
 
-import com.example.foodshop.model.OrderDetail;
+import com.example.foodshop.model.OrderDetailList;
 import com.example.foodshop.model.Product;
 
 import java.io.Serializable;
@@ -11,8 +11,8 @@ public class CartObj implements Serializable {
     private String userId;
     private String idStore;
     private String note;
-    private Map<String, OrderDetail> items;
-    OrderDetail orderDetail;
+    private Map<String, OrderDetailList> items;
+    OrderDetailList orderDetail;
     int quantity = 0;
 
     public String getUserId() {
@@ -39,19 +39,19 @@ public class CartObj implements Serializable {
         this.note = note;
     }
 
-    public Map<String, OrderDetail> getItems() {
+    public Map<String, OrderDetailList> getItems() {
         return items;
     }
 
     public void addItemToCart(Product product) {
         if(this.items == null ) {
-            this.items = new HashMap<String, OrderDetail>();
+            this.items = new HashMap<String, OrderDetailList>();
         }
         if(this.items.containsKey(product.getIdProduct())) {
-            orderDetail = (OrderDetail) this.items.get(product.getIdProduct());
+            orderDetail = (OrderDetailList) this.items.get(product.getIdProduct());
             orderDetail.setQuantity(orderDetail.getQuantity() +1);
         }else{
-            orderDetail = new OrderDetail();
+            orderDetail = new OrderDetailList();
             orderDetail.setIdProduct(product.getIdProduct());
             orderDetail.setProductName(product.getName());
             orderDetail.setUnitPrice(product.getPrice());
@@ -73,7 +73,7 @@ public class CartObj implements Serializable {
                     this.items = null;
                 }
             }else {
-                orderDetail = (OrderDetail) this.items.get(title);
+                orderDetail = (OrderDetailList) this.items.get(title);
                 orderDetail.setQuantity(orderDetail.getQuantity() -1);
                 this.items.put(title, orderDetail);
             }

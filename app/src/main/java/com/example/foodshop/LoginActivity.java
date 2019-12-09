@@ -59,7 +59,6 @@ public class LoginActivity extends AppCompatActivity {
         GoogleSignInAccount currentUser = GoogleSignIn.getLastSignedInAccount(LoginActivity.this);
         if(currentUser != null) {
             RequestLogin login = new RequestLogin(currentUser.getEmail(), null, currentUser.getId());
-            Log.d("TOKEN", "token: " + currentUser.getIdToken());
             userRepo.checkLogin(login, true, new CallbackData<ResponseLoginDTO>() {
                 @Override
                 public void onSuccess(ResponseLoginDTO responseLoginDTO) {

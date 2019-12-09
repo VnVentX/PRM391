@@ -7,4 +7,5 @@ public interface ConfigApi {
     String GET_ALL_STORE = "stores/";
     String GET_ALL_CATEGORY = "categories/";
     String GET_STORE_BY_CATEGORY = "stores/byCate/{idCategory}";
+    String ORDER = "orders/";
 }
