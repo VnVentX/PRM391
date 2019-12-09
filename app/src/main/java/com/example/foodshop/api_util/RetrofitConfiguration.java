@@ -25,9 +25,9 @@ public class RetrofitConfiguration {
         };
         if(retrofitAdapter == null) {
             OkHttpClient client = new OkHttpClient.Builder()
-                    .connectTimeout(60, TimeUnit.SECONDS)
+                    .connectTimeout(120, TimeUnit.SECONDS)
                     .addInterceptor(interceptor)
-                    .readTimeout(80, TimeUnit.SECONDS)
+                    .readTimeout(150, TimeUnit.SECONDS)
                     .build();
             retrofitAdapter = new Retrofit.Builder().baseUrl(ConfigApi.BASE_URL)
                     .addConverterFactory(GsonConverterFactory.create())

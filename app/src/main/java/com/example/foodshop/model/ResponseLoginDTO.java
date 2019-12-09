@@ -1,11 +1,19 @@
 package com.example.foodshop.model;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.io.Serializable;
 import java.util.List;
 
 public class ResponseLoginDTO implements Serializable {
+
+    @SerializedName("idUser")
     String idUser;
+
+    @SerializedName("tokenJWT")
     String tokenJWT;
+
+    @SerializedName("userRoleDTO")
     List<String> userRoleDTO;
 
     public String getIdUser() {
@@ -30,5 +38,14 @@ public class ResponseLoginDTO implements Serializable {
 
     public void setUserRoleDTO(List<String> userRoleDTO) {
         this.userRoleDTO = userRoleDTO;
+    }
+
+    @Override
+    public String toString() {
+        return "ResponseLoginDTO{" +
+                "idUser='" + idUser + '\'' +
+                ", tokenJWT='" + tokenJWT + '\'' +
+                ", userRoleDTO=" + userRoleDTO +
+                '}';
     }
 }

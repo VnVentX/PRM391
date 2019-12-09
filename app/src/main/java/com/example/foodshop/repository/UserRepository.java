@@ -5,5 +5,6 @@ import com.example.foodshop.model.RequestLogin;
 import com.example.foodshop.model.ResponseLoginDTO;
 
 public interface UserRepository {
-    void checkLogin(RequestLogin logins, boolean isGmail, CallbackData<ResponseLoginDTO> callBack);
+
+    void  checkLogin(RequestLogin logins, boolean isGmail, CallbackData<ResponseLoginDTO> callBack);
 }

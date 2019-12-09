@@ -1,5 +1,7 @@
 package com.example.foodshop.repository;
 
+import android.util.Log;
+
 import com.example.foodshop.api_util.CallbackData;
 import com.example.foodshop.api_util.RetrofitConfiguration;
 import com.example.foodshop.model.RequestLogin;
@@ -18,6 +20,7 @@ public class UserRespositoryImpl implements UserRepository {
             @Override
             public void onResponse(Call<ResponseLoginDTO> call, Response<ResponseLoginDTO> response) {
                 ResponseLoginDTO loginDTO = response.body();
+                Log.d("REQUEST_LOGINDTO", "Login: " + loginDTO);
                 if(loginDTO != null) {
                     callBack.onSuccess(loginDTO);
                 }else {
