@@ -8,4 +8,9 @@ public interface ConfigApi {
     String GET_ALL_CATEGORY = "categories/";
     String GET_STORE_BY_CATEGORY = "stores/byCate/{idCategory}";
     String ORDER = "orders/";
+    String GET_ORDER_BY_USERID = "orders/byUser/{idUser}";
+    String GET_USERD_DETAIL = "users/{idUser}";
+    String UPDATE_USER = "users/{idUser}";
+    String GET_ACCOUNT_USERID = "accounts/{idUser}";
+    String SEARCH_STORE = "stores/search";
 }

@@ -8,11 +8,13 @@
     tools:context=".HomeFragment">
 
     <!-- TODO: Update blank fragment layout -->
-    <EditText
+    <SearchView
         android:id="@+id/txtSearch"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Search"/>
+        android:queryHint="Search"
+        android:iconifiedByDefault="false"/>
+
     <HorizontalScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">

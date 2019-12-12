@@ -8,11 +8,56 @@
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
+        android:id="@+id/txtName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Profile"
+        android:text="Ho Xuan Cuong"
         android:gravity="center"
-        android:textStyle="bold"
-        android:textSize="20sp"/>
+        android:textColor="#17202A"
+        android:textSize="20dp"
+        android:layout_marginTop="5dp"/>
 
+    <ImageView
+        android:id="@+id/txtImage"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:background="@drawable/round_image"
+        android:src="@drawable/ic_person_black_24dp"
+        android:scaleType="fitXY"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"/>
+
+    <TextView
+        android:id="@+id/txtEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Email: cuonghx@gmail.com"
+        android:gravity="center"
+        android:textColor="#17202A"
+        android:textSize="20dp"
+        android:layout_marginTop="5dp"/>
+    <TextView
+        android:id="@+id/txtBalance"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Balance: 100,000VND"
+        android:gravity="center"
+        android:textColor="#17202A"
+        android:textSize="20dp"
+        android:layout_marginTop="5dp"
+        android:textStyle="bold"/>
+    <Button
+        android:id="@+id/btnEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Edit Profile"
+        android:layout_margin="5dp"
+        android:background="#F08080" />
+    <Button
+        android:id="@+id/btnLogout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Logout"
+        android:layout_margin="5dp"
+        android:background="#F08080" />
 </LinearLayout>

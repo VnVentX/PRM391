@@ -9,10 +9,13 @@ import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Part;
 import retrofit2.http.Path;
+import retrofit2.http.Query;
 
 public interface StoreService {
     @GET(ConfigApi.GET_ALL_STORE)
     Call<List<Store>> getAllStore();
     @GET(ConfigApi.GET_STORE_BY_CATEGORY)
     Call<List<Store>> getStore(@Path("idCategory") String idCategory);
+    @GET(ConfigApi.SEARCH_STORE)
+    Call<List<Store>> searchStore(@Query("name") String name);
 }

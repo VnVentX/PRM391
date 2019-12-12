@@ -61,21 +61,21 @@ public class CartObj implements Serializable {
         this.items.put(product.getIdProduct(), orderDetail);
     }
 
-    public void removeItemFromCart(String title) {
+    public void removeItemFromCart(Product product) {
         if(this.items == null) {
             return;
         }
 
-        if(this.items.containsKey(title)) {
-            if(this.items.get(title).getQuantity() == 0) {
-                this.items.remove(title);
+        if(this.items.containsKey(product.getIdProduct())) {
+            if(this.items.get(product.getIdProduct()).getQuantity() == 1) {
+                this.items.remove(product.getIdProduct());
                 if (this.items.isEmpty()) {
                     this.items = null;
                 }
             }else {
-                orderDetail = (OrderDetailList) this.items.get(title);
+                orderDetail = (OrderDetailList) this.items.get(product.getIdProduct());
                 orderDetail.setQuantity(orderDetail.getQuantity() -1);
-                this.items.put(title, orderDetail);
+                this.items.put(product.getIdProduct(), orderDetail);
             }
         }
     }

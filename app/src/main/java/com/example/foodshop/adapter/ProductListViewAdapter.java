@@ -80,11 +80,11 @@ public class ProductListViewAdapter extends BaseAdapter {
                 StoreActivity storeActivity = (StoreActivity) view.getContext();
                 storeActivity.removePrice(price);
                 if(cart.getItems().get(product.getIdProduct()).getQuantity() == 1) {
-                    cart.removeItemFromCart(product.getIdProduct());
+                    cart.removeItemFromCart(product);
                     txtQuantty.setText("0");
                     btnMinus.setEnabled(false);
                 }else if(cart.getItems().get(product.getIdProduct()).getQuantity() > 1) {
-                    cart.removeItemFromCart(product.getIdProduct());
+                    cart.removeItemFromCart(product);
                     txtQuantty.setText(cart.getItems().get(product.getIdProduct()).getQuantity() + "");
                 }
             }

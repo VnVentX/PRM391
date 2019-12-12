@@ -10,9 +10,14 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Lich su dat hang"
+        android:text="Lịch sử đặt hàng"
         android:gravity="center"
         android:textStyle="bold"
-        android:textSize="20sp"/>
+        android:textSize="20sp"
+        android:textColor="#F5B7B1"/>
+    <ListView
+        android:id="@+id/billContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"></ListView>
 
 </LinearLayout>

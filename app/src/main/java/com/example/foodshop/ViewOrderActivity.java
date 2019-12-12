@@ -34,7 +34,7 @@ public class ViewOrderActivity extends AppCompatActivity {
         txtNote = findViewById(R.id.txtNote);
         txtTotal = findViewById(R.id.txtTotalPrice);
 
-        txtUsername.setText(orderDetail.getUserFullName());
+        txtUsername.setText("Người Đặt: " + orderDetail.getUserFullName());
         txtStoreName.setText(orderDetail.getStoreName());
         if(orderDetail.getNotes().length() != 0) {
             txtNote.setText(orderDetail.getNotes());

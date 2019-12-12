@@ -58,4 +58,27 @@ public class StoreRepositoryImpl implements StoreRepository{
             }
         });
     }
+
+    @Override
+    public void fetchStoreByName(String name, final CallbackData<List<Store>> callBack) {
+        Call<List<Store>> call = storeService.searchStore(name);
+        call.enqueue(new Callback<List<Store>>() {
+            @Override
+            public void onResponse(Call<List<Store>> call, Response<List<Store>> response) {
+                List<Store> stores = response.body();
+                if(stores != null) {
+                    callBack.onSuccess(stores);
+                }else {
+                    callBack.onFail("None Store!!!");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<List<Store>> call, Throwable t) {
+                if(t != null) {
+                    callBack.onFail(t.getMessage());
+                }
+            }
+        });
+    }
 }

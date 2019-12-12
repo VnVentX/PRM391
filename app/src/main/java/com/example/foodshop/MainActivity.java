@@ -49,7 +49,6 @@ public class MainActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         user = (ResponseLoginDTO) intent.getSerializableExtra("user");
-        Toast.makeText(MainActivity.this, "Welcome "+user.getIdUser(), Toast.LENGTH_LONG).show();
     }
 
     public ResponseLoginDTO userInfo() {

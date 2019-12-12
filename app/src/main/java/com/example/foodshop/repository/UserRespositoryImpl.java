@@ -6,6 +6,7 @@ import com.example.foodshop.api_util.CallbackData;
 import com.example.foodshop.api_util.RetrofitConfiguration;
 import com.example.foodshop.model.RequestLogin;
 import com.example.foodshop.model.ResponseLoginDTO;
+import com.example.foodshop.model.User;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -30,6 +31,56 @@ public class UserRespositoryImpl implements UserRepository {
 
             @Override
             public void onFailure(Call<ResponseLoginDTO> call, Throwable t) {
+                if(t != null) {
+                    callBack.onFail(t.getMessage());
+                }
+            }
+        });
+    }
+
+    public UserRespositoryImpl() {
+        super();
+    }
+
+    @Override
+    public void fetchUserDetail(String idUser, final CallbackData<User> callBack) {
+        Call<User> call = userService.getUserDetail(idUser);
+        call.enqueue(new Callback<User>() {
+            @Override
+            public void onResponse(Call<User> call, Response<User> response) {
+                User user = response.body();
+                if(user != null) {
+                    callBack.onSuccess(user);
+                }else{
+                    callBack.onFail("User Error");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<User> call, Throwable t) {
+                if(t != null) {
+                    callBack.onFail(t.getMessage());
+                }
+            }
+        });
+    }
+
+    @Override
+    public void editUser(User user, final CallbackData<User> callBack) {
+        Call<User> call = userService.updateUser(user);
+        call.enqueue(new Callback<User>() {
+            @Override
+            public void onResponse(Call<User> call, Response<User> response) {
+                User user = response.body();
+                if(user != null) {
+                    callBack.onSuccess(user);
+                }else{
+                    callBack.onFail("User Error");
+                }
+            }
+
+            @Override
+            public void onFailure(Call<User> call, Throwable t) {
                 if(t != null) {
                     callBack.onFail(t.getMessage());
                 }

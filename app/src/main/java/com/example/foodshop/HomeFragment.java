@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -16,11 +17,13 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.foodshop.adapter.StoreListViewAdapter;
+import com.example.foodshop.api_util.CallbackData;
 import com.example.foodshop.model.Category;
 import com.example.foodshop.model.ResponseLoginDTO;
 import com.example.foodshop.model.Store;
 import com.example.foodshop.presenter.CategoryListPresenter;
 import com.example.foodshop.presenter.StoreListPresenter;
+import com.example.foodshop.repository.StoreRepositoryImpl;
 import com.example.foodshop.view.CategoryListView;
 import com.example.foodshop.view.LoadingView;
 import com.example.foodshop.view.StoreListView;
@@ -42,6 +45,8 @@ public class HomeFragment extends Fragment implements StoreListView, LoadingView
     CategoryListPresenter categoryListPresenter;
 
     ResponseLoginDTO user;
+    SearchView searchView;
+    StoreRepositoryImpl storeRepository = new StoreRepositoryImpl();
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -51,10 +56,11 @@ public class HomeFragment extends Fragment implements StoreListView, LoadingView
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_home, container, false);
+        final View view = inflater.inflate(R.layout.fragment_home, container, false);
 
         MainActivity mainActivity = (MainActivity) view.getContext();
         user = mainActivity.userInfo();
+        searchView = view.findViewById(R.id.txtSearch);
 
         //load store
         listViewStore = view.findViewById(R.id.courseList);
@@ -82,6 +88,22 @@ public class HomeFragment extends Fragment implements StoreListView, LoadingView
         for (Fragment fragment : getChildFragmentManager().getFragments()) {
             transaction.remove(fragment);
         }
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                Intent intent = new Intent(view.getContext(), SearchResultActivity.class);
+                intent.putExtra("searchValue", s);
+                startActivity(intent);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                return false;
+            }
+        });
+
         return view;
     }
 

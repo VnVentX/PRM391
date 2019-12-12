@@ -50,15 +50,7 @@
         android:layout_marginLeft="20dp"
         android:textColor="#17202A"
         android:onClick="clickToLogin"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Register Here"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:gravity="center"
-        android:layout_marginTop="15dp"
-        android:onClick="clickToRegister"/>
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -73,7 +65,7 @@
         android:layout_marginTop="10dp"
         android:layout_marginRight="20dp"
         android:layout_marginLeft="20dp"
-        android:background="#3498DB"
+        android:background="@drawable/common_google_signin_btn_text_dark"
         android:text="login by google"
         android:textColor="#FFF"
         android:textStyle="bold"/>

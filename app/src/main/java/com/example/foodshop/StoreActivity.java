@@ -73,6 +73,7 @@ public class StoreActivity extends AppCompatActivity {
         intent.putExtra("cart", cart);
         intent.putExtra("total", ""+totals);
         intent.putExtra("storeName", store.getName());
+        intent.putExtra("user", user);
         startActivity(intent);
     }
 }

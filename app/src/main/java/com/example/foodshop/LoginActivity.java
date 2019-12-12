@@ -22,9 +22,11 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class LoginActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
+    private FirebaseUser mUser;
     private GoogleSignInClient signInClient;
     private int RC_SIGN_IN = 0;
     Button loginGG;
@@ -58,13 +60,14 @@ public class LoginActivity extends AppCompatActivity {
     protected void onStart() {
         GoogleSignInAccount currentUser = GoogleSignIn.getLastSignedInAccount(LoginActivity.this);
         if(currentUser != null) {
-            RequestLogin login = new RequestLogin(currentUser.getEmail(), null, currentUser.getId());
+            RequestLogin login = new RequestLogin(currentUser.getEmail(), null, currentUser.getId(), currentUser.getFamilyName(), currentUser.getGivenName());
             userRepo.checkLogin(login, true, new CallbackData<ResponseLoginDTO>() {
                 @Override
                 public void onSuccess(ResponseLoginDTO responseLoginDTO) {
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                     intent.putExtra("user", responseLoginDTO);
                     startActivity(intent);
+                    finish();
                 }
 
                 @Override
@@ -93,13 +96,14 @@ public class LoginActivity extends AppCompatActivity {
     private void handleSignInResult(Task<GoogleSignInAccount> completeTask) {
         try {
             GoogleSignInAccount account = completeTask.getResult(ApiException.class);
-            RequestLogin login = new RequestLogin(account.getEmail(), null, account.getId());
+            RequestLogin login = new RequestLogin(account.getEmail(), null, account.getId(), account.getFamilyName(), account.getGivenName());
             userRepo.checkLogin(login, true, new CallbackData<ResponseLoginDTO>() {
                 @Override
                 public void onSuccess(ResponseLoginDTO responseLoginDTO) {
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                     intent.putExtra("user", responseLoginDTO);
                     startActivity(intent);
+                    finish();
                 }
 
                 @Override
@@ -114,6 +118,20 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void clickToLogin(View view) {
+        RequestLogin login = new RequestLogin("storeadmin@gmail.com", "12345678", null, "Store", "Admin");
+        userRepo.checkLogin(login, true, new CallbackData<ResponseLoginDTO>() {
+            @Override
+            public void onSuccess(ResponseLoginDTO responseLoginDTO) {
+                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                intent.putExtra("user", responseLoginDTO);
+                startActivity(intent);
+            }
+
+            @Override
+            public void onFail(String msg) {
+
+            }
+        });
     }
 
     public void clickToRegister(View view) {

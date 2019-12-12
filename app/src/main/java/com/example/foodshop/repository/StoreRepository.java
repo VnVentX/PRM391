@@ -8,4 +8,5 @@ import java.util.List;
 public interface StoreRepository {
     void fetchListStore(CallbackData<List<Store>> callback);
     void fetchStoreByCategory(String idCategory, CallbackData<List<Store>> callback);
+    void fetchStoreByName(String name, CallbackData<List<Store>> callBack);
 }

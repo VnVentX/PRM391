@@ -2,6 +2,8 @@ package com.example.foodshop;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -15,6 +17,7 @@ import com.example.foodshop.cart.CartObj;
 import com.example.foodshop.model.Order;
 import com.example.foodshop.model.OrderDetail;
 import com.example.foodshop.model.OrderDetailList;
+import com.example.foodshop.model.ResponseLoginDTO;
 import com.example.foodshop.repository.OrderRepositoryImpl;
 
 import java.text.SimpleDateFormat;
@@ -32,6 +35,7 @@ public class CartActivity extends AppCompatActivity {
     String total;
     OrderListViewAdapter adapter;
     OrderRepositoryImpl orderRepo = new OrderRepositoryImpl();
+    ResponseLoginDTO user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +52,7 @@ public class CartActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         total = intent.getStringExtra("total");
+        user = (ResponseLoginDTO) intent.getSerializableExtra("user");
         orderDetailList = new ArrayList<>();
         cart = (CartObj) intent.getSerializableExtra("cart");
         orderDetailList.addAll(cart.getItems().values());
@@ -70,14 +75,36 @@ public class CartActivity extends AppCompatActivity {
         orderRepo.createOrder(order, new CallbackData<OrderDetail>() {
             @Override
             public void onSuccess(OrderDetail orderDetail) {
-                Intent intent = new Intent(CartActivity.this, ViewOrderActivity.class);
-                intent.putExtra("orderDetail", orderDetail);
-                startActivity(intent);
+                AlertDialog.Builder builder = new AlertDialog.Builder(CartActivity.this);
+                builder.setMessage("Đặt Món Thành Công");
+                builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Intent intent = new Intent(CartActivity.this, MainActivity.class);
+                        intent.putExtra("user", user);
+                        startActivity(intent);
+                    }
+                });
+                AlertDialog dialog = builder.create();
+                dialog.show();
             }
 
             @Override
             public void onFail(String msg) {
-
+                if(msg != "") {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(CartActivity.this);
+                    builder.setMessage("Số tiền của bạn không đủ!!!");
+                    builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            Intent intent = new Intent(CartActivity.this, MainActivity.class);
+                            intent.putExtra("user", user);
+                            startActivity(intent);
+                        }
+                    });
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
+                }
             }
         });
     }
